@@ -1,0 +1,26 @@
+language: rust
+rust:
+  - nightly-2020-10-31 #🎃
+  - nightly
+stages:
+  - ensure format
+  - deny warnings
+  - test
+script:
+  - export RUST_TARGET_PATH=$PWD
+  - cargo +$TRAVIS_RUST_VERSION build --target thumbv7m-pebble-eabi
+jobs:
+  include:
+    - stage: ensure format
+      if: branch = develop
+      script:
+        - rustup toolchain install nightly --profile minimal --component rustfmt
+        - cargo +nightly fmt -- --check
+    - stage: deny warnings
+      if: branch = develop
+      script:
+        - rustup toolchain install nightly --profile minimal --component clippy
+        - export RUST_TARGET_PATH=$PWD
+        - RUSTFLAGS='-D warnings' cargo +nightly build --target thumbv7m-pebble-eabi
+  fast_finish: true
+cache: cargo

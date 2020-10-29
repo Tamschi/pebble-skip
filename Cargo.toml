@@ -1,13 +1,36 @@
 [package]
-name = "pebble"
+name = "pebble-skip"
 version = "0.0.1"
 authors = ["Tamme Schichler <tamme@schichler.dev>"]
 edition = "2018"
+description = "High-level API wrapper for Pebble (watch) SDK 4.3"
+license = "MIT OR Apache-2.0"
+keywords = ["Pebble", "watch", "embedded", "RAII", "wrapper"]
+categories = ["hardware-support"]
+repository = "https://github.com/Tamschi/pebble-skip"
+homepage = "https://github.com/Tamschi/pebble-skip/tree/v0.0.1"
+documentation = "https://docs.rs/pebble-skip/0.0.1"
+readme = "README.md"
+include = [
+	"**/*.rs",
+	"!tests/unincluded_*.rs", # Tests of meta data files not included in the package.
+	"Cargo.toml",
+	"CHANGELOG.md",
+	"CODE_OF_CONDUCT.md",
+	"LICENSE-*",
+	"README.md",
+]
 publish = false
 
 autotests = false
 autobenches = false
 autoexamples = false
+
+[badges]
+travis-ci = { repository = "Tamschi/pebble-skip", branch = "develop" }
+is-it-maintained-issue-resolution = { repository = "Tamschi/pebble-skip" }
+is-it-maintained-open-issues = { repository = "Tamschi/pebble-skip" }
+maintenance = { status = "experimental" }
 
 [lib]
 name = "pebble"

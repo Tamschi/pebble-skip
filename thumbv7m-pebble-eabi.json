@@ -1,0 +1,33 @@
+{
+	"arch": "arm",
+	"cpu": "cortex-m3",
+	"data-layout": "e-m:e-p:32:32-i1:8:32-i8:8:32-i16:16:32-i64:64-v128:64:128-a:0:32-n32-S64",
+	"disable-redzone": true,
+	"eliminate-frame-pointer": true,
+	"emit-debug-gdb-scripts": false,
+	"env": "",
+	"executables": true,
+	"is-builtin": false,
+	"linker": "rust-lld",
+	"linker-flavor": "ld.lld",
+	"linker-is-gnu": true,
+	"llvm-target": "thumbv7m-unknown-eabi",
+	"max-atomic-width": 32,
+	"no-compiler-rt": true,
+	"os": "unknown",
+	"panic-strategy": "abort",
+	"relocation-model": "pic",
+	"singlethread": "true",
+	"target-c-int-width": "32",
+	"target-endian": "little",
+	"target-pointer-width": "32",
+	"unsupported-abis": [
+		"stdcall",
+		"fastcall",
+		"vectorcall",
+		"thiscall",
+		"win64",
+		"sysv64"
+	],
+	"vendor": ""
+}
