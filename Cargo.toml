@@ -1,0 +1,21 @@
+[package]
+name = "pebble"
+version = "0.0.1"
+authors = ["Tamme Schichler <tamme@schichler.dev>"]
+edition = "2018"
+publish = false
+
+autotests = false
+autobenches = false
+autoexamples = false
+
+[lib]
+name = "pebble"
+test = false
+doctest = false
+bench = false
+
+[dependencies]
+debugless-unwrap = "0.0.4"
+pebble-sys = { path = "../pebble-sys" }
+unsafe_unwrap = "0.1.0"
