@@ -33,7 +33,7 @@ is-it-maintained-open-issues = { repository = "Tamschi/pebble-skip" }
 maintenance = { status = "experimental" }
 
 [lib]
-name = "pebble"
+name = "pebble_skip"
 test = false
 doctest = false
 bench = false

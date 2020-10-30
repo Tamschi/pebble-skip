@@ -213,7 +213,9 @@ impl<T: ?Sized> Window<T> {
 
 	#[must_use]
 	pub fn is_loaded(&self) -> bool {
-		unsafe { window_is_loaded(&*self.0) }
+		// I assume the interior mutation could cause issues with background workers here,
+		// but [`Window`] won't be Send or Sync, so this shouldn't be terrible.
+		unsafe { window_is_loaded(self.0.as_mut_unchecked()) }
 	}
 
 	/// Pushes this window onto the window navidation stack, as topmost window of the app.
