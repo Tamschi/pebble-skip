@@ -7,6 +7,7 @@ stages:
   - deny warnings
   - test
 script:
+  - rustup +$TRAVIS_RUST_VERSION component add rust-src
   - export RUST_TARGET_PATH=$PWD
   - cargo +$TRAVIS_RUST_VERSION build --target thumbv7m-pebble-eabi
 jobs:
@@ -19,7 +20,7 @@ jobs:
     - stage: deny warnings
       if: branch = develop
       script:
-        - rustup toolchain install nightly --profile minimal --component clippy
+        - rustup toolchain install nightly --profile minimal --component clippy,rust-src
         - export RUST_TARGET_PATH=$PWD
         - RUSTFLAGS='-D warnings' cargo +nightly build --target thumbv7m-pebble-eabi
   fast_finish: true
