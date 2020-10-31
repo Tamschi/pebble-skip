@@ -1,3 +1,7 @@
+//! Documentation for this crate is work in progress.
+//!
+//! For now, please also refer to the C API documentation at <https://developer.rebble.io/developer.pebble.com/docs/c/index.html> for more information.
+
 #![no_std]
 #![feature(coerce_unsized)]
 #![feature(layout_for_ptr)]
