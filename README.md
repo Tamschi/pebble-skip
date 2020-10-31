@@ -4,7 +4,7 @@
 [![Crates.io](https://img.shields.io/crates/v/pebble-skip)](https://crates.io/crates/pebble-skip)
 [![Docs.rs](https://docs.rs/pebble-skip/badge.svg)](https://docs.rs/crates/pebble-skip)
 
-![Rust 1.40.0](https://img.shields.io/static/v1?logo=Rust&label=&message=1.40.0&color=grey)
+![Rust nightly-2020-10-30](https://img.shields.io/static/v1?logo=Rust&label=&message=nightly-2020-10-30&color=grey)
 [![Build Status](https://travis-ci.com/Tamschi/pebble-skip.svg?branch=develop)](https://travis-ci.com/Tamschi/pebble-skip/branches)
 ![Crates.io - License](https://img.shields.io/crates/l/pebble-skip/0.0.1)
 
