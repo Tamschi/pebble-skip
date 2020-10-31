@@ -23,10 +23,24 @@ use pebble_sys::{
 pub fn malloc<'a, T>() -> Result<&'a mut MaybeUninit<T>, ()> {
 	match size_of::<T>() {
 		0 => Ok(unsafe { &mut *(NonNull::dangling().as_ptr()) }),
-		size => match unsafe { sys_memory::malloc(size).cast_unchecked_mut() } {
-			Some(uninit) => Ok(uninit),
-			None => Err(()),
-		},
+		size => unsafe { sys_memory::malloc(size).cast_unchecked_mut() }.ok_or(()),
+	}
+}
+
+/// # Errors
+///
+/// Iff not enough heap memory could be allocated.
+pub fn malloc_buffer_uninit<'a>(len: usize) -> Result<&'a mut [MaybeUninit<u8>], ()> {
+	match len {
+		0 => Ok(unsafe {
+			slice::from_raw_parts_mut(NonNull::<u8>::dangling().as_ptr() as *mut _, 0)
+		}),
+		size => Ok(unsafe {
+			slice::from_raw_parts_mut(
+				sys_memory::malloc(size).cast_unchecked_mut().ok_or(())?,
+				size,
+			)
+		}),
 	}
 }
 

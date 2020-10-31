@@ -24,7 +24,7 @@ use core::{
 };
 use pebble_sys::standard_c::memory::free;
 use standard_c::{
-	memory::{calloc, malloc, memcpy_uninit},
+	memory::{calloc, malloc, malloc_buffer_uninit, memcpy_uninit},
 	CStr, Heap,
 };
 
@@ -65,6 +65,21 @@ impl<'a, T> Box<'a, T> {
 			free(&mut *(mem as *mut _));
 		}
 		value
+	}
+}
+
+impl<'a> Box<'a, [MaybeUninit<u8>]> {
+	/// # Errors
+	///
+	/// Iff not enough heap memory could be allocated.
+	pub fn new_buffer_uninit(len: usize) -> Result<Self, ()> {
+		let mem = malloc_buffer_uninit(len)?;
+		Ok(Self(mem))
+	}
+
+	#[must_use]
+	pub fn assume_init(r#box: Self) -> Box<'a, [u8]> {
+		unsafe { Box::from_raw(MaybeUninit::slice_assume_init_mut(Box::leak(r#box))) }
 	}
 }
 
