@@ -19,6 +19,7 @@ include = [
 	"CODE_OF_CONDUCT.md",
 	"LICENSE-*",
 	"README.md",
+	"thumbv7m-pebble-eabi.json",
 ]
 publish = false
 
