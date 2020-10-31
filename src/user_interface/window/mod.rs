@@ -1,4 +1,4 @@
-use super::window_stack;
+use super::{layers::Layer, window_stack};
 use crate::{graphics::graphics_types::Color8, Box, Handle, SpecialDrop};
 use core::{
 	marker::PhantomData,
@@ -229,6 +229,10 @@ impl<T: ?Sized> Window<T> {
 
 	pub fn set_background_color(&self, background_color: Color8) {
 		unsafe { window_set_background_color(self.0.as_mut_unchecked(), background_color) }
+	}
+
+	pub fn root_layer(&self) -> Layer<void> {
+		unsafe { Layer(Handle::new(window_get_root_layer(&*self.0)), PhantomData) }
 	}
 }
 

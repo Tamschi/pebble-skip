@@ -174,22 +174,26 @@ impl Box<'static, CStr<Heap>> {
 /// This is *sort of* like a Cell, but for constant handles. It should still allow surface-level aliasing.
 ///
 /// Note that this is a reference wrapper and does not drop its target!
-struct Handle<'a, T: 'a + ?Sized>(*mut T, PhantomData<&'a mut T>);
+//TODO: Make this private again!
+pub struct Handle<'a, T: 'a + ?Sized>(*mut T, PhantomData<&'a mut T>);
 
 impl<'a, T: 'a + ?Sized> Handle<'a, T> {
 	pub fn new(exclusive_handle: &'a mut T) -> Self {
 		Self(exclusive_handle as *mut T, PhantomData)
 	}
 
+	#[must_use]
 	pub fn unwrap(self) -> &'a mut T {
 		unsafe { &mut *self.0 }
 	}
 
 	#[allow(clippy::mut_from_ref)]
+	#[must_use]
 	pub unsafe fn as_mut_unchecked(&self) -> &mut T {
 		&mut *self.0
 	}
 
+	#[must_use]
 	pub unsafe fn duplicate(&self) -> Self {
 		Self(self.0, self.1)
 	}
