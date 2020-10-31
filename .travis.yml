@@ -3,7 +3,7 @@ rust:
   - nightly-2020-10-30
   - nightly
 stages:
-  - ensure format
+  # - ensure format
   - deny warnings
   - test
 script:
@@ -11,11 +11,11 @@ script:
   - cargo +$TRAVIS_RUST_VERSION build --target thumbv7m-pebble-eabi
 jobs:
   include:
-    - stage: ensure format
-      if: branch = develop
-      script:
-        - rustup toolchain install nightly --profile minimal --component rustfmt
-        - cargo +nightly fmt -- --check
+    # - stage: ensure format
+    #   if: branch = develop
+    #   script:
+    #     - rustup toolchain install nightly --profile minimal --component rustfmt
+    #     - cargo +nightly fmt -- --check
     - stage: deny warnings
       if: branch = develop
       script:
