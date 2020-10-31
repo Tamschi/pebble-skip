@@ -157,7 +157,7 @@ impl<'a, F: ?Sized + Future + Unpin> Future for Box<'a, F> {
 }
 
 impl Box<'static, CStr<Heap>> {
-	/// Clones a Rust [`str`] onto the Pebble heap, appending `'\0'` in the process.
+	/// Clones a Rust [`prim@str`] onto the Pebble heap, appending `'\0'` in the process.
 	///
 	/// # Errors
 	///

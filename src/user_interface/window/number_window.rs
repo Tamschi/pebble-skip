@@ -194,7 +194,7 @@ impl<'a, T> NumberWindow<'a, T> {
 	///
 	/// # Safety
 	///
-	/// This function is only safe if `raw_window` is a raw window handle that was previously [`.leak()`]ed from the same [`NumberWindow`] variant and no other [`Window<T>`] instance has been created from it since.
+	/// This function is only safe if `raw_window` is a raw window handle that was previously [`.leak()`]ed from the same [`NumberWindow<T>`] variant and no other [`NumberWindow<T>`] instance has been created from it since.
 	///
 	/// [`.leak()`]: #method.leak
 	pub unsafe fn from_raw(

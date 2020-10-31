@@ -14,15 +14,17 @@ pub mod memory;
 pub type void = pebble_sys::standard_c::memory::void;
 
 /// A zero-terminated UTF-8 string slice.  
-/// Note: When dereferencing this type to [`str`], the trailing `'\0'` is **not** included.
+/// Note: When dereferencing this type to [`prim@str`], the trailing `'\0'` is **not** included.
 ///
 /// # Why this is reimplemented (aside from not being in [`core`]):
 ///
 /// Comment on [`std::ffi::CStr`]:
-/// ```
+/// ```text
 /// // Anyway, `CStr` representation and layout are considered implementation detail, are
 /// // not documented and must not be relied upon.
 /// ```
+///
+/// [`std::ffi::CStr`]: https://doc.rust-lang.org/stable/std/ffi/struct.CStr.html
 #[repr(transparent)]
 pub struct CStr<T: Storage>(PhantomData<T>, str);
 
