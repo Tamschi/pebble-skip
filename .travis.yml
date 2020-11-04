@@ -24,4 +24,4 @@ jobs:
         - export RUST_TARGET_PATH=$PWD
         - RUSTFLAGS='-D warnings' cargo +nightly build --target thumbv7m-pebble-eabi
   fast_finish: true
-cache: cargo
+# cache: cargo # This maybe breaks CI.
