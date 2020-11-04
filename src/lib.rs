@@ -11,7 +11,7 @@
 #![feature(min_specialization)]
 #![feature(never_type)]
 #![feature(unsize)]
-#![doc(html_root_url = "https://docs.rs/pebble/0.0.1")]
+#![doc(html_root_url = "https://docs.rs/pebble-skip/0.0.1")]
 #![warn(clippy::pedantic)]
 #![allow(clippy::match_bool)]
 #![allow(clippy::module_name_repetitions)] // Matching the SDK documentation.
